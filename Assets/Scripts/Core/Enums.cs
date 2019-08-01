@@ -7,8 +7,8 @@ namespace GameCore.Enums
     public enum Scenes : int
     {
         StartMenu = 0,
-        Level1 = 1,
-        Level2 = 2,
+        Level2 = 1,
+        Level1 = 2,
         GameOver = 3
     }
 }

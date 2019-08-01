@@ -8,6 +8,7 @@ namespace GameCore.Enums
     {
         StartMenu = 0,
         Level1 = 1,
-        GameOver = 2
+        Level2 = 2,
+        GameOver = 3
     }
 }

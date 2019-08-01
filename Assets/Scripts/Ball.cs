@@ -20,11 +20,14 @@ public class Ball : MonoBehaviour
     bool hasStarted = false;
 
     Vector2 paddleToBallVector;
+
+    AudioSource audioSource;
     void Start()
     {
         paddleToBallVector = transform.position - paddle1.transform.position;
         rb = GetComponent<Rigidbody2D>();
         hasStarted = false;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -36,7 +39,7 @@ public class Ball : MonoBehaviour
             LaunchOnMouseClick();
         }
     }
-
+    s
     private void LaunchOnMouseClick()
     {
         if (Input.GetMouseButtonDown(0))
@@ -49,5 +52,19 @@ public class Ball : MonoBehaviour
     private void LockBallToPaddle()
     {
         transform.position = new Vector2(paddle1.transform.position.x, paddle1.transform.position.y) + paddleToBallVector;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Paddle"))
+        {
+            audioSource.pitch = 2f;
+        }
+        else
+        {
+            audioSource.pitch = 1f;
+        }
+
+        audioSource.Play();
     }
 }

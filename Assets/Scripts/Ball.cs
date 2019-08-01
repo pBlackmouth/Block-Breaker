@@ -39,7 +39,7 @@ public class Ball : MonoBehaviour
             LaunchOnMouseClick();
         }
     }
-    s
+    
     private void LaunchOnMouseClick()
     {
         if (Input.GetMouseButtonDown(0))

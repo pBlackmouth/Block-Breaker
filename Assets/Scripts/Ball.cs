@@ -1,27 +1,20 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Ball : MonoBehaviour
 {
 
-    [SerializeField]
-    Paddle paddle1;
+    [SerializeField] Paddle paddle1;
+    [SerializeField] float xPush = 2f;
+    [SerializeField] float yPush = 10f;
+    [SerializeField] float randomFactor = 0.2f;
 
-    [SerializeField]
-    float xPush = 2f;
-
-    [SerializeField]
-    float yPush = 10f;
-
-    Rigidbody2D rb;
     bool hasStarted = false;
-
     Vector2 paddleToBallVector;
 
+    Rigidbody2D rb;
     AudioSource audioSource;
+
     void Start()
     {
         paddleToBallVector = transform.position - paddle1.transform.position;
@@ -56,6 +49,8 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
+        Vector2 velocityTweak = new Vector2(Random.Range(0, randomFactor), Random.Range(0, randomFactor));
         if (collision.gameObject.CompareTag("Paddle"))
         {
             audioSource.pitch = 2f;
@@ -66,5 +61,6 @@ public class Ball : MonoBehaviour
         }
 
         audioSource.Play();
+        rb.velocity += velocityTweak;
     }
 }

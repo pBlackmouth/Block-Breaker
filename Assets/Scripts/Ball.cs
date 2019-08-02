@@ -9,7 +9,7 @@ public class Ball : MonoBehaviour
     [SerializeField] float yPush = 10f;
     [SerializeField] float randomFactor = 0.2f;
 
-    bool hasStarted = false;
+    public bool hasStarted = false;
     Vector2 paddleToBallVector;
 
     Rigidbody2D rb;

@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Paddle
+  - Breakable
+  - Unbreakable
   layers:
   - Default
   - TransparentFX
